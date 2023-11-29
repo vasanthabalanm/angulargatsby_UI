@@ -1,0 +1,70 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.logo-name{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.small-content{
+    font-size: 12px;
+    color: gray;
+}
+.github,.youtube{
+    background-color: white;
+}
+.social-icons{
+    gap: 20px;
+    display: flex;
+    justify-content: space-between ;
+}
+.social-media-icons{
+    margin-top: 20px;
+}
+.form-letter{
+    width: 250px;
+}
+.newletter-label{
+    font-size: 10px;
+}
+.email-newsletter{
+    background-color:#f4f4f4;
+    border-style: none;
+}
+.send-btn{
+    background-color: #663399;
+    border-style: none;
+    border-radius: 0px  5px 5px 0px;
+    height: 26px;
+}
+.headin-otherlink{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.other-links{
+    gap: 100px;
+}
+.other-links ul li{
+    list-style: none;
+}
+.other-links ul li a{
+    text-decoration: none;
+    color: gray;
+    font-size: 13px;
+}
+.content-github{
+    font-size: 15px;
+    color: gray;
+}
+.bottom-wrapper{
+    justify-content: space-between;
+}
+.content-end{
+    font-size: 12px;
+    color: gray;
+}
+.content-end-bottom{
+    color: gray;
+    font-size: 15px;
+    gap: 20px;
+}
