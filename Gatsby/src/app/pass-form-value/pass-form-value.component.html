@@ -1,0 +1,12 @@
+<p>this is child component using the parent using @Input decarator</p>
+<div *ngIf="foods.length>0;then showfood; else nofood">
+
+</div>
+<ng-template #showfood>
+    <ul>
+        <li *ngFor="let food of foods">{{food}}</li>
+    </ul>
+</ng-template>
+<ng-template #nofood>
+    <p>No items added!</p>
+</ng-template>

@@ -1,0 +1,31 @@
+.main-content-wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 30px;
+}
+.head-main{
+    font-size: 45px;
+    font-weight: bold;
+}
+.sub-head-main{
+    font-size: 18px;
+}
+.request-demo{
+    border-style: none;
+    text-decoration: underline;
+    color: #6324a9;
+    font-weight: 600;
+    font-size: 18px;
+}
+.learn-mores{
+    color: #ffffff;
+    background-color: #6324a9;
+    font-weight: bold;
+    font-size: 18px;
+    width: 120px;
+}
+.wrppaerss-main-content{
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+}

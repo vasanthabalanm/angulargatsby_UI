@@ -1,0 +1,21 @@
+.main-content{
+    font-size: 45px;
+    font-weight: bold;
+}
+.sub-content{
+    font-size: 18px;
+}
+.card{
+    border-style: none;
+    width: 550px;
+}
+.learn-more{
+    color: #6324a9;
+}
+.rows-1,.rows-2{
+    display: flex;
+    justify-content: center;
+}
+.heading-bold{
+    font-weight: 700;
+}

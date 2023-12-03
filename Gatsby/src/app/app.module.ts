@@ -8,7 +8,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ServicecontentComponent } from './servicecontent/servicecontent.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
-
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { FormsConceptComponent } from './forms-concept/forms-concept.component';
+import { FormsModule } from '@angular/forms';
+import { PassFormValueComponent } from './pass-form-value/pass-form-value.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +19,15 @@ import { ContactComponent } from './contact/contact.component';
     FooterComponent,
     ServicecontentComponent,
     HeaderComponent,
-    ContactComponent
+    ContactComponent,
+    RegisterFormComponent,
+    FormsConceptComponent,
+    PassFormValueComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

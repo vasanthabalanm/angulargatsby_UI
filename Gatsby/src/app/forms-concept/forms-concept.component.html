@@ -1,0 +1,84 @@
+<div class="container">
+    <!-- Data binding -->
+    <h1>Data Binding:</h1>
+    <!-- 1.one way(property binding) -->
+    <h1 style="text-decoration: underline;">One way binding</h1>
+    <p>There is man,who's name is<b>{{name}}</b>,and his age around<b>{{age}}</b>.but his lived in<b>{{address}}</b></p>
+    <h1 style="text-decoration: underline;">Event binding</h1>
+    <!-- event binding -->
+    <p>button clicking times!:{{count}}</p>
+    <button (click)="trackCount()"> Click to see count </button>
+
+    <!-- 2.two way binding -->
+    <h1 style="text-decoration: underline;">Two way binding</h1>
+    <form>
+        first name is:
+        <input type="text" (input)="handleinput($event)">
+        <!-- two way binding     -->
+        the default name is :{{name1}}
+        <input type="text" [(ngModel)]="name1">
+
+    </form>
+    <!-- Directives -->
+    <h1>Directives:</h1>
+    <h1 style="text-decoration: underline;">Structural directives</h1>
+    <p>favorite cartoons:</p>
+    <p>using <b>*ngFor</b> structural directives</p>
+    <table>
+        <thead>
+            <tr>
+                <th>SI NO:</th>
+                <th style="text-decoration: underline;">Cartoon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let count of title; let id = index">
+                <td>{{id+1}}</td>
+                <td>{{count}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- *ng switch -->
+    <p>the concept of <b>*ndSwitch</b></p>
+    <p>enter the number it will convert into words 1-5:</p>
+    <input type="number" [(ngModel)]="number">
+        <div [ngSwitch]="number">
+            <p *ngSwitchCase="1">One</p>
+            <p *ngSwitchCase="2">Two</p>
+            <p *ngSwitchCase="3">three</p>
+            <p *ngSwitchCase="4">Four</p>
+            <p *ngSwitchCase="5">Five</p>
+        </div>
+
+    <!-- *ngIf -->
+    Checkbox:<input type="checkbox" [(ngModel)]="check">
+    <div *ngIf="check; then checked ; else uncheck">
+        <!-- there is also another way -->
+        <!-- <p>this is selected</p> -->
+    </div>
+    <!-- if =>instead use thenblock -->
+    <ng-template #checked>
+        <p>this is already selecetd</p>
+    </ng-template>
+    <ng-template #uncheck>
+        <p>not selected</p>
+    </ng-template>
+
+
+
+    <!-- share data to one component to another component -->
+    <div>
+        <p>Form share one componen to another component</p>
+        <!-- parent -->
+        <p>consider this is as a parent component so i need to pass the value to child component</p>
+        <p>use the @Input decarator</p>
+        <form>
+            <label>Enter the like foods:</label>
+            <input type="text" name="food" [(ngModel)]="food">
+            <button (click)="addfood()">Click to add</button>
+        </form>
+        <app-pass-form-value [allfoods] = "foods"></app-pass-form-value>
+    </div>
+
+</div>

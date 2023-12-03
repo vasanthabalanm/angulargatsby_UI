@@ -1,0 +1,43 @@
+
+.form-group{
+    background-color: #FCFAFF;
+    border-radius: 20px;
+    height: 140vh;
+}
+.general-query{
+    color: #8A4BAF;
+}
+.docs-forms-field{
+    font-size: 40px;
+    font-weight: bold;
+}
+.form-field{
+    display: flex;
+    justify-content:center;
+    text-align: center;
+}
+.frst-name{
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(100, 99, 75);
+    margin-left: 335px;
+}
+
+.username-box{
+    border: 1px solid rgb(128, 128, 128,0.2);
+    border-radius: 2px;
+    width: 450px;
+    height: 45px;   
+}
+.textarea-box{
+    border: 1px solid rgb(128, 128, 128,0.2);
+    border-radius: 2px;
+    width: 450px;
+    height: 80px;  
+}
+.submit-btn{
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: #663399;
+}
