@@ -16,7 +16,7 @@
         <input type="text" (input)="handleinput($event)">
         <!-- two way binding     -->
         the default name is :{{name1}}
-        <input type="text" [(ngModel)]="name1">
+        <input type="text" [(ngModel)]="name1" [ngModelOptions]="{standalone: true}">
 
     </form>
     <!-- Directives -->
@@ -42,7 +42,7 @@
     <!-- *ng switch -->
     <p>the concept of <b>*ndSwitch</b></p>
     <p>enter the number it will convert into words 1-5:</p>
-    <input type="number" [(ngModel)]="number">
+    <input type="number" [(ngModel)]="number" [ngModelOptions]="{standalone: true}">
         <div [ngSwitch]="number">
             <p *ngSwitchCase="1">One</p>
             <p *ngSwitchCase="2">Two</p>
@@ -52,7 +52,7 @@
         </div>
 
     <!-- *ngIf -->
-    Checkbox:<input type="checkbox" [(ngModel)]="check">
+    Checkbox:<input type="checkbox" [(ngModel)]="check" [ngModelOptions]="{standalone: true}">
     <div *ngIf="check; then checked ; else uncheck">
         <!-- there is also another way -->
         <!-- <p>this is selected</p> -->
@@ -68,17 +68,176 @@
 
 
     <!-- share data to one component to another component -->
+    <!-- parent to child -->
     <div>
+        <h3>parent to child</h3>
         <p>Form share one componen to another component</p>
         <!-- parent -->
         <p>consider this is as a parent component so i need to pass the value to child component</p>
         <p>use the @Input decarator</p>
+        <p>in parent to child component share data, we have to insert the child component into parent comoponent</p>
         <form>
             <label>Enter the like foods:</label>
-            <input type="text" name="food" [(ngModel)]="food">
+            <input type="text" name="food" [(ngModel)]="food" [ngModelOptions]="{standalone: true}">
             <button (click)="addfood()">Click to add</button>
         </form>
+        <!-- this is child component -->
         <app-pass-form-value [allfoods] = "foods"></app-pass-form-value>
     </div>
 
+    <!-- child to parent -->
+    <div>
+        <h3>child component to parent</h3>
+        <p>now i send the value from child component to parent using @output decorator</p>
+        <p>in child to parent component share data, we have to insert the parent component in child component</p>
+    
+        <!-- now the eg is parent to child -->
+        <!-- <app-parent-component></app-parent-component> -->
+
+
+        <!-- now child to parent -->
+        <app-child-component></app-child-component>
+    </div>
+
+
+    <!-- life cycle hooks -->
+    <div>
+        <h3>life cycle hooks</h3>
+        <p>ngOnChanges()</p>
+        <label for="">name:</label>
+        <input type="text" name="name2" [(ngModel)]="name2">
+        <app-ngonchange-compont [name]="name2"></app-ngonchange-compont>
+    </div>
+
+
+    <!-- templatdriven forms -->
+    <h1>Angular forms</h1>
+    <h3>Template driven forms</h3>
+    <div class="container bg-light">
+        <h3>Form details</h3>
+        <form #contactform ="ngForm" (submit)="formsubmit(contactform)">
+            <div>
+                <label>Email:</label>
+                <input type="email" name="mail" id="mail" placeholder="enter email" [(ngModel)]="contact.mail" #email="ngModel" required>
+                <span class="text-danger" *ngIf="!email.valid && (email.touched || email.dirty)">invalid email</span>
+            </div>
+            <br>
+            <div ngModelGroup>
+                <p>Name</p> <br>
+                <label>Firstname:</label>
+                <input type="text" name="firstname" id="firstname" [(ngModel)]="contact.name.firstName"> <br>
+                <label>Lastname:</label>
+                <input type="text" name="lastname" id="lastname" [(ngModel)]="contact.name.lastName">
+            </div>     
+            <br>
+            <div>
+                <label>Age:</label>
+                <input type="number" name="age" id="age" [(ngModel)]="contact.age">
+            </div>       
+            <br>
+            <div>
+                <label>Country:</label>
+                <input type="text" name="country" id="country" [(ngModel)]="contact.country">
+            </div>
+            <br>
+            <div>
+                <label>State:</label>
+                <input type="text" name="states" id="states" [(ngModel)]="contact.states">
+            </div>
+            <br>
+            <div>
+                <label>City:</label>
+                <select name="city" [(ngModel)]="contact.city">
+                    <option value="">select the state</option>
+                    <option [ngValue]="district.district" *ngFor="let district of alldistricts">{{district.district}}</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label>DOB:</label>
+                <input type="date" name="dob" id="dob" [(ngModel)]="contact.dob">
+            </div>
+            <br>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="male" id="gender" [(ngModel)]="contact.gender">Male
+                <input type="radio" name="gender" value="female" id="gender" [(ngModel)]="contact.gender">Female
+            </div>
+
+            <div>
+                <label>Address:</label>
+                <textarea name="address" id="address" cols="30" rows="3" [(ngModel)]="contact.address"></textarea>
+            </div>
+            <br>
+            <div>
+                <input type="checkbox" name="isagree" [(ngModel)]="contact.isagree" >Here by i declare war!.
+            </div>
+            <button type="submit" [disabled]="!contactform.valid">Submit</button>
+        </form>
+    </div>
+
+
+    <h3 style="text-decoration: underline;">Reactive forms</h3>
+    <h5>import reactive form module and forms module in app.module.ts</h5>
+    <div class="container">
+        <form [formGroup]="phonebooks" (submit)="checkvalues()">
+            <div>
+                <label for="">Email:</label>
+                <input type="email" name="mails" placeholder="enter email" formControlName="mails">
+                <span class="text-danger" *ngIf="!phonebooks.controls.mails.valid && phonebooks.controls.mails.touched">invalid email</span>
+            </div>
+            <br>
+            <div formGroupName="namebook">
+                <p>Name</p>
+                <label for="">Firstname:</label>
+                <input type="text" name="firstnames" placeholder="firstname" formControlName="firstNames">
+                <label for="">Lastnames:</label>
+                <input type="text" name="lastnames" placeholder="lastname" formControlName="lastNames">
+            </div>
+            <br>
+            <div>
+                <label for="">Age:</label>
+                <input type="number" name="ages" placeholder="enter age" formControlName="ages">
+            </div>
+            <br>
+            <div>
+                <label for="">Country:</label>
+                <input type="text" name="contry" placeholder="enter country" formControlName="countries">
+            </div>
+            <br>
+            <div>
+                <label for="">State:</label>
+                <input type="text" name="stats" placeholder="enter state" formControlName="states">
+            </div>
+            <br>
+            <div>
+                <label for="">Date of Birth:</label>
+                <input type="date" name="brth" placeholder="enter DOB" formControlName="dateodbirth">
+            </div>
+            <br>
+            <div>
+                <label for="">Districts:</label>
+                <select name="dists"  formControlName="cities">
+                    <option value="">select the district</option>
+                    <option [ngValue]="distr.district" *ngFor="let distr of alldistricts">{{distr.district}}</option>
+                </select>
+            </div>
+            <div>
+                <label for="">Gender:</label>
+                <input type="radio" name="gendr" id="gendr" value="male" formControlName="gendr">Male
+                <input type="radio" name="gendr" id="gendr" value="Fe-male" formControlName="gendr">Female
+            </div>
+            <br>
+            <div>
+                <label for="">Address:</label>
+                <textarea name="addres" id="" cols="30" rows="10" formControlName="addres"></textarea>
+            </div>
+            <br>
+            <div>
+                <input type="checkbox" name="ischecks" formControlName="ischcks">warning, reactIve form module.
+            </div>
+            <br>
+            <button type="submit" [disabled]="!phonebooks.valid">click to c console</button>
+        </form>
+    </div>
 </div>

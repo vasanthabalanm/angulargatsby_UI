@@ -1,0 +1,18 @@
+<div>
+    <app-parent-component (myfavbrands)="brandupdated($event)"></app-parent-component>
+    <p>the mobile brands are:</p>
+    <div *ngIf="listbrand.length>0; then showbrands;else nobrands">
+
+    </div>
+    <ng-template  #showbrands>
+        <ul>
+            <li *ngFor="let mobiles of listbrand">
+            {{mobiles}}
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template #nobrands>
+        <p>No mobiles added!</p>
+    </ng-template>
+    
+</div>

@@ -12,6 +12,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { FormsConceptComponent } from './forms-concept/forms-concept.component';
 import { FormsModule } from '@angular/forms';
 import { PassFormValueComponent } from './pass-form-value/pass-form-value.component';
+import { ChildComponentComponent } from './child-component/child-component.component';
+import { ParentComponentComponent } from './parent-component/parent-component.component';
+import { NgonchangeCompontComponent } from './hookfunctions/ngonchange-compont.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +26,16 @@ import { PassFormValueComponent } from './pass-form-value/pass-form-value.compon
     ContactComponent,
     RegisterFormComponent,
     FormsConceptComponent,
-    PassFormValueComponent
+    PassFormValueComponent,
+    ChildComponentComponent,
+    ParentComponentComponent,
+    NgonchangeCompontComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
