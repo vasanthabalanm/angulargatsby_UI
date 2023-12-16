@@ -16,6 +16,8 @@ import { ChildComponentComponent } from './child-component/child-component.compo
 import { ParentComponentComponent } from './parent-component/parent-component.component';
 import { NgonchangeCompontComponent } from './hookfunctions/ngonchange-compont.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

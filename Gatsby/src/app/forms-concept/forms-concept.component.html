@@ -120,6 +120,12 @@
                 <label>Email:</label>
                 <input type="email" name="mail" id="mail" placeholder="enter email" [(ngModel)]="contact.mail" #email="ngModel" required>
                 <span class="text-danger" *ngIf="!email.valid && (email.touched || email.dirty)">invalid email</span>
+                <!-- <span class="text-danger errors-check" *ngIf="gatsbyform.controls.firstName.errors?.['minlength']">Need
+                            minimum 4 characters*</span>
+                        <span class="text-danger errors-check" *ngIf="gatsbyform.controls.firstName.errors?.['maxlength']">upto
+                            20 characters*</span>
+                        <span class="text-danger errors-check" *ngIf="gatsbyform.controls.firstName.errors?.['required']">
+                            Firstname is required*</span> -->
             </div>
             <br>
             <div ngModelGroup>

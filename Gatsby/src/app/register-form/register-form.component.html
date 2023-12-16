@@ -2,48 +2,200 @@
     <div>
         <h6 class="general-query fw-b text-center">GENERAL INQUIRY?</h6>
         <p class="text-center docs-forms-field pt-2">Fill out the form below</p>
-        <form>
+        <form [formGroup]="gatsbyform" (submit)="gatsbyformsubmit()">
             <div class="py-2">
                 <label class="frst-name">First Name*</label>
                 <div class="form-field">
-                    <input type="text" name="firstname" class="username-box ">
+                    <input type="text" name="firstname" class="username-box " formControlName="firstName" (input)="Validateinput($event)">
+                    <!-- validation -->
+                    <!-- <div class="text-danger errors-check"
+                        *ngIf="!firstname?.valid && ((firstname?.touched) || (firstname?.dirty))">
+                        <ng-container *ngIf="firstname?.errors?.['minlength']">
+                            <p class="text-danger">
+                                Min 4 char*
+                            </p>
+                        </ng-container>
+                        <p class="text-danger" *ngIf="firstname?.errors?.['maxlength']">
+                            Upto 30 char*
+                        </p>
+                        <p class="text-danger" *ngIf="firstname?.errors?.['pattern']">
+                            Only letters are allowed*
+                        </p>
+                        <p class="text-danger" *ngIf="firstname?.errors?.['required']">
+                            FirstName is required*
+                        </p>
+                    </div> -->
+
+                    <div class="text-danger errors-check" *ngIf="firstname?.touched || firstname?.dirty">
+                        <ng-container *ngIf="!firstname?.valid">
+                            <p *ngIf="firstname?.errors?.['required']">First Name is required*</p>
+                            <p *ngIf="firstname?.errors?.['minlength'] && !firstname?.errors?.['required']">Min length 4*</p>
+                            <p *ngIf="firstname?.errors?.['maxlength'] && !firstname?.errors?.['required'] && !firstname?.errors?.['minlength']">Max length 30*</p>
+                            <p *ngIf="firstname?.hasError('nonamespaces') && !firstname?.errors?.['required'] && !firstname?.errors?.['minlength'] && !firstname?.errors?.['maxlength']">Please avoid using spaces starts and ends</p>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
             <div class="py-2">
                 <label class="frst-name">Last Name*</label>
                 <div class="form-field">
-                    <input type="text" name="lastname" class="username-box ">
+                    <input type="text" name="lastname" class="username-box " formControlName="lastName" (input)="Validateinput($event)">
+                    <!-- <div class="text-danger errors-check"
+                        *ngIf="!lastname?.valid && ((lastname?.touched) || (lastname?.dirty))">
+                        <p class="text-danger" *ngIf="lastname?.errors?.['minlength']">
+                            Min 10 char*
+                        </p>
+                        <p class="text-danger" *ngIf="lastname?.errors?.['maxlength']">
+                            Upto 20 char*
+                        </p>
+                        <p class="text-danger" *ngIf="lastname?.errors?.['pattern']">
+                            Only letters are allowed*
+                        </p>
+                        <p class="text-danger" *ngIf="lastname?.errors?.['required']">
+                            LastName is required*
+                        </p>
+                    </div> -->
+                    <div class="text-danger errors-check" *ngIf="lastname?.touched || lastname?.dirty">
+                        <ng-container *ngIf="!lastname?.valid">
+                            <p *ngIf="lastname?.errors?.['required']">Last Name is required*</p>
+                            <p *ngIf="lastname?.errors?.['minlength'] && !lastname?.errors?.['required']">Min length 10*</p>
+                            <p *ngIf="lastname?.errors?.['maxlength'] && !lastname?.errors?.['required'] && !lastname?.errors?.['minlength']">Max length 20*</p>
+                            <p *ngIf="lastname?.hasError('nonamespaces') && !lastname?.errors?.['required'] && !lastname?.errors?.['minlength'] && !lastname?.errors?.['maxlength']">Please avoid using spaces starts and ends</p>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
             <div class="py-3">
                 <label class="frst-name">Buisness email*</label>
                 <div class="form-field">
-                    <input type="email" name="mail" class="username-box ">
+                    <input type="email" name="mail" class="username-box" formControlName="mail">
+                    <div class="text-danger errors-check" *ngIf="!mails?.valid && ((mails?.touched) || (mails?.dirty))">
+                        <p class="text-danger" *ngIf="mails?.errors?.['pattern']">
+                            Enter valid email*
+                        </p>
+                        <p class="text-danger" *ngIf="mails?.errors?.['required']">
+                            Email is required*
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="py-3">
+                <label class="frst-name">Date of Birth*</label>
+                <div class="form-field">
+                    <input type="date" name="dob" class="username-box" formControlName="dob" max="{{todayDate}}">
+                    <div class="text-danger errors-check"
+                        *ngIf="!bithdate?.valid && ((bithdate?.touched) || (bithdate?.dirty))">
+                        <p class="text-danger" *ngIf="bithdate?.errors?.['required']">
+                            Birthdate is required*
+                        </p>
+                        <p class="text-danger" *ngIf="bithdate?.hasError('validatedates')">Please select correct date*
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="py-3">
                 <label class="frst-name">Phone*</label>
                 <div class="form-field">
-                    <input type="number" name="phone" class="username-box ">
+                    <input type="text" name="phone" class="username-box " formControlName="phone"
+                        placeholder="+91-XXXXXXXXXX">
+                    <div class="text-danger errors-check"
+                        *ngIf="!phones?.valid && ((phones?.touched) || (phones?.dirty))">
+                        <p class="text-danger" *ngIf="phones?.errors?.['pattern']">
+                            Enter 10 digit number with country code*
+                        </p>
+                        <p class="text-danger" *ngIf="phones?.errors?.['required']">
+                            Phone number is required*
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="py-3">
                 <label class="frst-name">Company*</label>
                 <div class="form-field">
-                    <input type="text" name="company" class="username-box ">
-                </div>
-            </div>
-            <div class="py-3">
-                <label class="frst-name">What we can help you to achieve?*</label>
-                <div class="form-field">
-                    <textarea name="comments" cols="30" rows="10" class="textarea-box "></textarea>
+                    <input type="text" name="company" class="username-box " formControlName="company">
+                    <div class="text-danger errors-check"
+                        *ngIf="!companies?.valid && ((companies?.touched) || (companies?.dirty))">
+                        <p class="text-danger" *ngIf="companies?.errors?.['required']">
+                            Company Name is required*
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="frst-name">
-                <button type="button" class="btn submit-btn">Submit</button>
+            <div class="py-3">
+                <label class="frst-name">What we can help you to achieve?*</label>
+                <div class="form-field">
+                    <textarea name="comments" cols="30" rows="10" class="textarea-box " formControlName="improvement"
+                        (input)="checkcharactercount()" minlength="0" maxlength="200"></textarea>
+                    <div class="text-danger errors-check"
+                        *ngIf="!feedbacks?.valid && ((feedbacks?.touched) || (feedbacks?.dirty))">
+                        <p class="text-danger" *ngIf="feedbacks?.errors?.['maxlength']">
+                            Not more than 200 char*
+                        </p>
+                        <p class="text-danger" *ngIf="feedbacks?.errors?.['required']">
+                            Feedback is required*
+                        </p>
+                        <p class="text-danger" *ngIf="feedbacks?.hasError('nospaces')">Please avoid using spaces starts
+                            and ends</p>
+                    </div>
+                    <small class="errors-check maxcharcount" [ngClass]="{'maxcharcount' : charcountcolor()}">{{charactercounts}}/{{maxlengths}} char*</small>
+
+                </div>
+            </div>
+
+            <!-- <div formGroupName="locations"> -->
+            <div>
+                <label class="frst-name">Country, state and city*</label>
+                <div class="form-field">
+                    <select name="country" formControlName="countries" class="username-box "
+                        (change)="getAllcountry()">
+                        <option value="select the country">select the country</option>
+                        <option *ngFor="let county of listcountry" [value]="county.iso2">{{county.name}}</option>
+                    </select>
+                    <div class="text-danger errors-check" *ngIf="!onecountry?.valid && onecountry?.touched ">
+                        <p class="text-danger" *ngIf="onecountry?.hasError('required')">
+                            Country is required*
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="form-field">
+                    <select name="state" formControlName="states" class="username-box"
+                        (change)="getAllstate()">
+                        <option value="">select the state</option>
+                        <option *ngFor="let states of liststate" [value]="states.iso2">{{states.name}}</option>
+                    </select>
+                    <div class="text-danger errors-check" *ngIf="!onestate?.valid && onestate?.touched ">
+                        <p class="text-danger" *ngIf="onestate?.hasError('required')">
+                            State is required*
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="form-field">
+                    <select name="city" formControlName="cities" class="username-box ">
+                        <option value="">select the city</option>
+                        <option *ngFor="let citiess of listcity" [value]="citiess.name">{{citiess.name}}</option>
+                    </select>
+                    <div class="text-danger errors-check" *ngIf="!onecity?.valid && onecity?.touched ">
+                        <p class="text-danger" *ngIf="onecity?.hasError('required')">
+                            City is required*
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frst-name py-5">
+                <button type="submit" class="btn submit-btn" [disabled]="!gatsbyform.valid">Submit</button>
             </div>
 
         </form>
     </div>
+
+
+    <!-- <div>
+        <ul>
+            <li *ngFor="let content of datum">{{content.price}}</li>
+        </ul>
+    </div> -->
 </div>

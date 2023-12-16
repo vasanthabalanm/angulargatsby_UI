@@ -14,7 +14,7 @@ export class ParentComponentComponent {
     this.brand = '';
     console.log(this.brands)
     // step2: child to parent concept
-    this.myfavbrands.emit(this.brands)
+    this.myfavbrands.emit(this.brands);
 
   }
 

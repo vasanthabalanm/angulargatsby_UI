@@ -2,7 +2,7 @@
 .form-group{
     background-color: #FCFAFF;
     border-radius: 20px;
-    height: 140vh;
+    height: 250vh;
 }
 .general-query{
     color: #8A4BAF;
@@ -11,11 +11,7 @@
     font-size: 40px;
     font-weight: bold;
 }
-.form-field{
-    display: flex;
-    justify-content:center;
-    text-align: center;
-}
+
 .frst-name{
     font-size: 14px;
     font-weight: 700;
@@ -28,16 +24,24 @@
     border-radius: 2px;
     width: 450px;
     height: 45px;   
+    margin-left: 335px;
 }
 .textarea-box{
     border: 1px solid rgb(128, 128, 128,0.2);
     border-radius: 2px;
     width: 450px;
     height: 80px;  
+    margin-left: 335px;
 }
 .submit-btn{
     color: #ffffff;
     font-weight: 600;
     font-size: 17px;
     background-color: #663399;
+}
+.errors-check{
+    margin-left: 335px;
+}
+.maxcharcount{
+    color: red;
 }

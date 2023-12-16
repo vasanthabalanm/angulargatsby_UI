@@ -124,6 +124,7 @@ export class FormsConceptComponent implements OnInit {
     checkvalues(){
       console.log(this.phonebooks.value);
     }
+    
 }
 // outside the main content
 // template drive forms
