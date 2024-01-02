@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CrudEmployeeService {
-  // employee_datas : any[] = [];
+  employee_datas : any[] = [];
   // constructor() { }
 
   // get_values(values:any){
@@ -17,9 +17,12 @@ export class CrudEmployeeService {
 
   private storageKey = 'employee_data';
 
-  get_values(): any {
+  // get_values(): any {
+  //   return JSON.parse(localStorage.getItem(this.storageKey) || '{}');
+  // }
+   get_values():any{
     return JSON.parse(localStorage.getItem(this.storageKey) || '{}');
-  }
+}
 
   set_values(data: any): void {
     localStorage.setItem(this.storageKey, JSON.stringify(data));

@@ -74,11 +74,6 @@ export class AddEmployeeComponent {
     }
 
   }
-  checkAllemployee() {
-    this.route.navigate(['showemployee']), {
-      state: { employeeData: this.addEmployeesForm.value }
-    }
-  }
 
   nonamespaces(empname: AbstractControl) {
     const employename = empname.value;
