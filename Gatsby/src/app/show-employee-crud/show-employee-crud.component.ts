@@ -16,11 +16,8 @@ export class ShowEmployeeCrudComponent {
     this.employeeData = this.setval.get_values();
   }
 
-  editEmployee(index: number) {
-    // ... existing code ...
-  
-    // Save the data to local storage after editing an employee.
-    this.router.navigate(['/enteremployee'], { queryParams: { index: index } });
+  editEmployee() {
+    this.router.navigate(['/enteremployee']);
     this.setval.set_values(this.employeeData);
   }
 }

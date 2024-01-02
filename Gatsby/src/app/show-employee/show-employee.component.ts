@@ -23,10 +23,10 @@ export class ShowEmployeeComponent {
       employeeDetails: this.form_builder.array([])
     });
 
-    const storedData = this.setval.get_values();
-    if (storedData && storedData.employeeDetails) {
-      this.addEmployeesForm.patchValue(storedData);
-    }
+    // const storedData = this.setval.get_values();
+    // if (storedData && storedData.employeeDetails) {
+    //   this.addEmployeesForm.patchValue(storedData);
+    // }
   }
 
 
@@ -70,7 +70,7 @@ export class ShowEmployeeComponent {
         EmployeeMail: ['', [Validators.required, Validators.pattern(formValidators.mail)]]
       })
     );
-    this.setval.set_values(this.addEmployeesForm.value);
+    // this.setval.set_values(this.addEmployeesForm.value);
   }
 
   get managernames() {
@@ -92,7 +92,6 @@ export class ShowEmployeeComponent {
   removeEmployeeData(indexValue: number) {
     const enteredValues = this.addEmployeesForm.controls['employeeDetails'] as FormArray;
     enteredValues.removeAt(indexValue);
-    this.setval.clearLocalStorage();
 
   }
 

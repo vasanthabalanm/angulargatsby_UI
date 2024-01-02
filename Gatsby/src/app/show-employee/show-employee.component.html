@@ -1,72 +1,41 @@
 <header class="display-6 fw-bold py-5 text-center">Add Employees</header>
 <div class="container card bg-light">
   <div class="card-body">
-    <form
-      [formGroup]="addEmployeesForm"
-      (ngSubmit)="employeeDetailsSubmitted()"
-    >
+    <form [formGroup]="addEmployeesForm" (ngSubmit)="employeeDetailsSubmitted()">
       <p class="fw-bold">Manager Details</p>
       <div class="container d-flex py-4">
         <div>
           <label for="">Manager Name:</label>
-          <input
-            type="text"
-            formControlName="managerName"
-            (input)="Validateinput($event)"
-          />
-          <div
-            class="text-danger"
-            *ngIf="managernames?.touched || managernames?.dirty"
-          >
+          <input type="text" formControlName="managerName" (input)="Validateinput($event)" />
+          <div class="text-danger" *ngIf="managernames?.touched || managernames?.dirty">
             <ng-container *ngIf="!managernames?.valid">
-              <small *ngIf="managernames?.errors?.['required']   "
-                >Manager Name is required*</small
-              >
-              <small
-                *ngIf="managernames?.errors?.['minlength'] && !managernames?.errors?.['required']"
-                >Min length 4*</small
-              >
-              <small
-                *ngIf="managernames?.errors?.['maxlength'] && !managernames?.errors?.['required'] && !managernames?.errors?.['minlength']"
-                >Max length 30*</small
-              >
-              <small
-                *ngIf="managernames?.hasError('nonamespaces') && !managernames?.errors?.['required'] && !managernames?.errors?.['minlength'] && !managernames?.errors?.['maxlength']"
-                >Please avoid using spaces starts and ends</small
-              >
+              <small *ngIf="managernames?.errors?.['required']   ">Manager Name is required*</small>
+              <small *ngIf="managernames?.errors?.['minlength'] && !managernames?.errors?.['required']">
+                Min length 4*</small>
+              <small *ngIf="managernames?.errors?.['maxlength'] && !managernames?.errors?.['required'] && !managernames?.errors?.['minlength']">
+                Max length 30*</small>
+              <small *ngIf="managernames?.hasError('nonamespaces') && !managernames?.errors?.['required'] && !managernames?.errors?.['minlength'] && !managernames?.errors?.['maxlength']">
+                Please avoid using spaces starts and ends</small>
             </ng-container>
           </div>
         </div>
         <div>
-          <label for="">Manager ID:</label
-          ><input type="text" formControlName="managerID" />
-          <div
-            class="text-danger"
-            *ngIf="
-              !managerid?.valid && (managerid?.touched || managerid?.dirty)
-            "
-          >
+          <label for="">Manager ID:</label><input type="text" formControlName="managerID" />
+          <div class="text-danger" *ngIf="!managerid?.valid && (managerid?.touched || managerid?.dirty)">
             <small *ngIf="managerid?.errors?.['required']">
               ManagerID is required*
             </small>
             <small *ngIf="managerid?.errors?.['minlength']">
-                min 4 length
+              min 4 length
             </small>
             <small *ngIf="managerid?.errors?.['maxlength']">
-                Max 10 length
+              Max 10 length
             </small>
           </div>
         </div>
         <div>
-          <label for="">Manager MailID:</label
-          ><input type="email" formControlName="managerMailID" />
-          <div
-            class="text-danger"
-            *ngIf="
-              !managermail?.valid &&
-              (managermail?.touched || managermail?.dirty)
-            "
-          >
+          <label for="">Manager MailID:</label><input type="email" formControlName="managerMailID" />
+          <div class="text-danger" *ngIf="!managermail?.valid && (managermail?.touched || managermail?.dirty)">
             <small *ngIf="managermail?.errors?.['pattern']">
               Enter valid email*
             </small>
@@ -77,21 +46,8 @@
         </div>
         <div>
           <label for="">Manager Phone Number:</label>
-          <input
-            type="tel"
-            formControlName="managerPhoneNumber"
-            minlength="6"
-            maxlength="14"
-            placeholder="+(91)-XXXXXXXXXX"
-            (input)="noalphabets($event)"
-          />
-          <div
-            class="text-danger"
-            *ngIf="
-              !managerphone?.valid &&
-              (managerphone?.touched || managerphone?.dirty)
-            "
-          >
+          <input type="tel" formControlName="managerPhoneNumber" minlength="6" maxlength="14"placeholder="+(91)-XXXXXXXXXX" (input)="noalphabets($event)" />
+          <div class="text-danger" *ngIf="!managerphone?.valid && (managerphone?.touched || managerphone?.dirty)">
             <p *ngIf="managerphone?.errors?.['pattern']">
               Enter 10 digit number with country code*
             </p>
@@ -105,11 +61,7 @@
 
       <div class="float-end">
         <div class="px-3">
-          <button
-            class="btn btn-secondary"
-            (click)="addEmployeeData()"
-            [disabled]="addEmployeesForm.get('employeeDetails')?.invalid"
-          >
+          <button class="btn btn-secondary" (click)="addEmployeeData()"[disabled]="addEmployeesForm.get('employeeDetails')?.invalid">
             (+) Add Employee
           </button>
         </div>
@@ -132,13 +84,7 @@
             </tr>
           </thead>
           <tbody formArrayName="employeeDetails">
-            <tr
-              *ngFor="
-                let employees of getEmployeeDetailsControls();
-                let i = index
-              "
-              [formGroupName]="i"
-            >
+            <tr *ngFor="let employees of getEmployeeDetailsControls();let i = index " [formGroupName]="i">
               <!-- <td>
                                 <input type="text" class="input-box-size" formControlName="Employeename" [ngClass]="{'is-invalid':finderrorinFormarray(i).controls['Employeename'].errors &&(finderrorinFormarray(i).controls['Employeename'].dirty || finderrorinFormarray(i).controls['Employeename'].touched)}" />
                                 <div *ngFor="let validation of validation_error_message.Employeename">
@@ -150,221 +96,82 @@
 
               <td>
                 <!-- <input type="text" class="input-box-size" formControlName="Employeename" (input)="Validateinput($event)" [ngClass]="{'is-invalid':finderrorinFormarray(i).controls['Employeename'].errors &&(finderrorinFormarray(i).controls['Employeename'].dirty || finderrorinFormarray(i).controls['Employeename'].touched)}" /> -->
-                <input
-                  type="text"
-                  class="input-box-size"
-                  formControlName="Employeename"
-                  (input)="Validateinput($event)"
-                />
-                <div
-                  *ngIf="
-                    finderrorinFormarray(i).controls['Employeename'].errors &&
-                    (finderrorinFormarray(i).controls['Employeename'].dirty ||
-                      finderrorinFormarray(i).controls['Employeename'].touched)
-                  "
-                >
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['Employeename'].hasError(
-                        'required'
-                      )
-                    "
-                  >
+                <input type="text" class="input-box-size" formControlName="Employeename"(input)="Validateinput($event)" />
+                <div *ngIf="finderrorinFormarray(i).controls['Employeename'].errors && (finderrorinFormarray(i).controls['Employeename'].dirty || finderrorinFormarray(i).controls['Employeename'].touched)">
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Employeename'].hasError('required')">
                     Employee Name is required
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['Employeename'].hasError(
-                        'minlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Employeename'].hasError('minlength')">
                     Minimum length is 4 characters
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['Employeename'].hasError(
-                        'maxlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Employeename'].hasError('maxlength')">
                     Maximum length is 30 characters
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['Employeename'].hasError(
-                        'nonamespaces'
-                      ) &&
-                      !finderrorinFormarray(i).controls[
-                        'Employeename'
-                      ].hasError('minlength') &&
-                      !finderrorinFormarray(i).controls[
-                        'Employeename'
-                      ].hasError('maxlength')
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Employeename'].hasError('nonamespaces') &&!finderrorinFormarray(i).controls['Employeename'].hasError('minlength') && !finderrorinFormarray(i).controls['Employeename'].hasError('maxlength')">
                     No empty spaces both start and end
                   </small>
                 </div>
               </td>
 
               <td>
-                <input
-                  type="text"
-                  class="input-box-size"
-                  formControlName="EmployeeID"
-                />
-                <div
-                  *ngIf="
-                    finderrorinFormarray(i).controls['EmployeeID'].errors &&
-                    (finderrorinFormarray(i).controls['EmployeeID'].dirty ||
-                      finderrorinFormarray(i).controls['EmployeeID'].touched)
-                  "
-                >
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'required'
-                      )
-                    "
-                  >
+                <input type="text" class="input-box-size" formControlName="EmployeeID" />
+                <div *ngIf="finderrorinFormarray(i).controls['EmployeeID'].errors && (finderrorinFormarray(i).controls['EmployeeID'].dirty || finderrorinFormarray(i).controls['EmployeeID'].touched)">
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeID'].hasError('required')">
                     ID is required
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'minlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeID'].hasError('minlength')">
                     Min 4 length
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'maxlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeID'].hasError('maxlength')">
                     Max 10 length
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'nobetweenspace'
-                      ) &&
-                      !finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'minlength'
-                      ) &&
-                      !finderrorinFormarray(i).controls['EmployeeID'].hasError(
-                        'maxlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeID'].hasError('nobetweenspace') && !finderrorinFormarray(i).controls['EmployeeID'].hasError('minlength') && !finderrorinFormarray(i).controls['EmployeeID'].hasError('maxlength')">
                     No spaces between
                   </small>
                 </div>
               </td>
               <td>
-                <input
-                  type="text"
-                  class="input-box-size"
-                  formControlName="EmployeeRole"
-                  (input)="Validateinput($event)"
-                />
-                <div
-                  *ngIf="
+                <input type="text" class="input-box-size" formControlName="EmployeeRole"
+                  (input)="Validateinput($event)" />
+                <div *ngIf="
                     finderrorinFormarray(i).controls['EmployeeRole'].errors &&
                     (finderrorinFormarray(i).controls['EmployeeRole'].dirty ||
                       finderrorinFormarray(i).controls['EmployeeRole'].touched)
-                  "
-                >
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeRole'].hasError(
-                        'required'
-                      )
-                    "
-                  >
+                  ">
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].hasError('required')">
                     Role is required
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeRole'].hasError(
-                        'minlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].hasError('minlength')">
                     Min 4 length
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeRole'].hasError(
-                        'maxlength'
-                      )
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].hasError('maxlength')">
                     Max 30 length
                   </small>
-                  <small
-                    class="text-danger"
-                    *ngIf="
-                      finderrorinFormarray(i).controls['EmployeeRole'].hasError(
-                        'nonamespaces'
-                      ) &&
-                      !finderrorinFormarray(i).controls[
-                        'EmployeeRole'
-                      ].hasError('minlength') &&
-                      !finderrorinFormarray(i).controls[
-                        'EmployeeRole'
-                      ].hasError('maxlength')
-                    "
-                  >
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].hasError('nonamespaces') && !finderrorinFormarray(i).controls['EmployeeRole'].hasError('minlength') && !finderrorinFormarray(i).controls['EmployeeRole'].hasError('maxlength')">
                     No empty spaces both start and end
                   </small>
                 </div>
               </td>
               <td>
-                <input
-                  type="tel"
-                  class="input-box-size"
-                  formControlName="EmployeePhone"
-                  (input)="noalphabets($event)"
-                  placeholder="+91-XXXXXXXXXX"
-                />
+                <input type="tel" class="input-box-size" formControlName="EmployeePhone" (input)="noalphabets($event)"placeholder="+91-XXXXXXXXXX" />
                 <div *ngIf="finderrorinFormarray(i).controls['EmployeePhone'].errors && (finderrorinFormarray(i).controls['EmployeePhone'].dirty || finderrorinFormarray(i).controls['EmployeePhone'].touched)">
-                    <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeePhone'].hasError('required')">
-                        Phone number is required
-                    </small>
-                    <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeePhone'].hasError('pattern')">
-                        Enter valid no & country code
-                    </small>
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeePhone'].hasError('required')">
+                    Phone number is required
+                  </small>
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeePhone'].hasError('pattern')">
+                    Enter valid no & country code
+                  </small>
                 </div>
               </td>
               <td>
-                <input
-                  type="email"
-                  class="input-box-size"
-                  formControlName="EmployeeMail"
-                />
+                <input type="email" class="input-box-size" formControlName="EmployeeMail" />
                 <div *ngIf="finderrorinFormarray(i).controls['EmployeeMail'].errors && (finderrorinFormarray(i).controls['EmployeeMail'].dirty || finderrorinFormarray(i).controls['EmployeeMail'].touched)">
-                    <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeMail'].hasError('required')">
-                        Email is required
-                    </small>
-                    <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeMail'].hasError('pattern')">
-                        Enter valid email
-                    </small>
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeMail'].hasError('required')">
+                    Email is required
+                  </small>
+                  <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeMail'].hasError('pattern')">
+                    Enter valid email
+                  </small>
                 </div>
               </td>
               <!-- <td class="text-center"> <button class="btn btn-danger px-2 py-1" (click)="removeEmployeeData(i)">Remove</button> </td> -->
@@ -382,14 +189,7 @@
         <div class="px-3">
           <!-- <button type="submit" class="btn btn-success" (click)="employeeDetailsSubmitted()"
                         [disabled]="((addEmployeesForm.invalid)&&(addEmployeesForm.get('employeeDetails')?.invalid))">submit</button> -->
-          <button
-            type="submit"
-            class="btn btn-success"
-            [disabled]="
-              !addEmployeesForm.valid ||
-              addEmployeesForm.get('employeeDetails')?.invalid
-            "
-          >
+          <button type="submit" class="btn btn-success" [disabled]="!addEmployeesForm.valid || addEmployeesForm.get('employeeDetails')?.invalid">
             submit
           </button>
         </div>
