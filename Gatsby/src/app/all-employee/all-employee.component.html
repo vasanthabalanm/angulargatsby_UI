@@ -1,0 +1,95 @@
+<!-- <header class="display-6 fw-bold py-5 text-center">
+    Employee Details List
+  </header>
+  <div class="container card bg-light">
+    <div class="card-body">
+      <div class="wrappers">
+        <div class="managerdetails">
+          <p>Manager Details</p>
+          <table *ngIf="employeeData">
+            <tbody>
+              <tr>
+                <td>Manager Name:{{ employeeData.managerName }}</td>
+              </tr>
+              <tr>
+                <td>Manager Id:{{ employeeData.managerID }}</td>
+              </tr>
+              <tr>
+                <td>Manager Mail:{{ employeeData.managerMailID }}</td>
+              </tr>
+              <tr>
+                <td>Manager Contact:{{ employeeData.managerPhoneNumber }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="employeedetails">
+          <p>Employee Details</p>
+          <table *ngFor="let employee of employeeData.employeeDetails">
+            <tbody>
+              <div class="m-3">
+                <tr>
+                  <td>Employee Name:{{ employee.Employeename }}</td>
+                </tr>
+                <tr>
+                  <td>Employee ID:{{ employee.EmployeeID }}</td>
+                </tr>
+                <tr>
+                  <td>Employee Role:{{ employee.EmployeeRole }}</td>
+                </tr>
+                <tr>
+                  <td>Employee Contact:{{ employee.EmployeePhone }}</td>
+                </tr>
+                <tr>
+                  <td>Employee Mail ID:{{ employee.EmployeeMail }}</td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <div class="text-center">
+        <button class="btn btn-primary" [routerLink]="['/addemployee']">Go back</button>
+      </div>
+    </div>
+  </div>
+  
+
+ -->
+
+<header class="display-6 fw-bold py-5 text-center">
+  Employee Details List
+</header>
+<div class="container-fluid card bg-light">
+  <div class="card-body px-5">
+    <table >
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Employee ID</th>
+          <th>Employee Role</th>
+          <th>Employee Phone</th>
+          <th>Employee Mail</th>
+          <th>Manager Name</th>
+          <th>Manager ID</th>
+          <th>Manager Mail</th>
+          <th>Manager Phone</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="employeeData">
+        <tr *ngFor="let employee of employeeData.employeeDetails">
+          <td>{{employee.Employeename}}</td>
+          <td>{{employee.EmployeeID}}</td>
+          <td>{{employee.EmployeeRole}}</td>
+          <td>{{employee.EmployeePhone}}</td>
+          <td>{{employee.EmployeeMail}}</td>
+          <td>{{employeeData.managerName}}</td>
+          <td>{{employeeData.managerID}}</td>
+          <td>{{employeeData.managerMailID}}</td>
+          <td>{{employeeData.managerPhoneNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

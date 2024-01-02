@@ -37,7 +37,18 @@
         <div>
           <button type="button" class="btn signup-btn">Sign-up</button>
         </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Task
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/addemployee']">FormArray</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/enteremployee']">Crud in FormArray</a></li>
+            <li><a class="dropdown-item" href="#">Coming soon!</a></li>
+          </ul>
+        </div>
       </div>
+      
     </div>
     
   </div>

@@ -1,0 +1,49 @@
+<header class="display-6 fw-bold py-5 text-center">
+    Employee Details List
+  </header>
+  <div class="container-fluid card bg-light">
+    <div class="card-body">
+      <div>
+        <table class="whole-table-content">
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Employee ID</th>
+              <th>Employee Role</th>
+              <th>Employee Phone</th>
+              <th>Employee Mail</th>
+              <th>Manager Name</th>
+              <th>Manager ID</th>
+              <th>Manager Mail ID</th>
+              <th>Manager Phone Number</th>
+              <th>Edit </th>
+              <!-- <th>Delete </th> -->
+            </tr>
+          </thead>
+          <tbody *ngIf="employeeData">
+            <tr *ngFor="let employee of employeeData.employeeDetails; let i = index">
+              <td>{{employee.Employeename}}</td>
+              <td>{{employee.EmployeeID}}</td>
+              <td>{{employee.EmployeeRole}}</td>
+              <td>{{employee.EmployeePhone}}</td>
+              <td>{{employee.EmployeeMail}}</td>
+              <td>{{employeeData.managerName}}</td>
+              <td>{{employeeData.managerID}}</td>
+              <td>{{employeeData.managerMailID}}</td>
+              <td>{{employeeData.managerPhoneNumber}}</td>
+              <td>
+                <button class="btn" (click)="editEmployee(i)">
+                  <i class="fas fa-pencil-alt edited-edit-icon" ></i>
+                </button>
+              </td>
+              <!-- <td class="text-center">
+                <button class="btn" [routerLink]="['/enteremployee']">
+                  <i class="fas fa-trash-alt edited-delete-icon"></i>
+                </button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

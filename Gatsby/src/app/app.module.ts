@@ -17,6 +17,10 @@ import { ParentComponentComponent } from './parent-component/parent-component.co
 import { NgonchangeCompontComponent } from './hookfunctions/ngonchange-compont.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { AllEmployeeComponent } from './all-employee/all-employee.component';
+import { ShowEmployeeComponent } from './show-employee/show-employee.component';
+import { ShowEmployeeCrudComponent } from './show-employee-crud/show-employee-crud.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import {HttpClientModule} from '@angular/common/http';
     PassFormValueComponent,
     ChildComponentComponent,
     ParentComponentComponent,
-    NgonchangeCompontComponent
+    NgonchangeCompontComponent,
+    AddEmployeeComponent,
+    AllEmployeeComponent,
+    ShowEmployeeComponent,
+    ShowEmployeeCrudComponent
   ],
   imports: [
     BrowserModule,
