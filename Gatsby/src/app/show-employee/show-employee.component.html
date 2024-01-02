@@ -133,11 +133,7 @@
               <td>
                 <input type="text" class="input-box-size" formControlName="EmployeeRole"
                   (input)="Validateinput($event)" />
-                <div *ngIf="
-                    finderrorinFormarray(i).controls['EmployeeRole'].errors &&
-                    (finderrorinFormarray(i).controls['EmployeeRole'].dirty ||
-                      finderrorinFormarray(i).controls['EmployeeRole'].touched)
-                  ">
+                <div *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].errors && (finderrorinFormarray(i).controls['EmployeeRole'].dirty || finderrorinFormarray(i).controls['EmployeeRole'].touched)">
                   <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['EmployeeRole'].hasError('required')">
                     Role is required
                   </small>

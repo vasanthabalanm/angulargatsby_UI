@@ -22,43 +22,7 @@ export class ShowEmployeeComponent {
       managerPhoneNumber: ['', [Validators.required, Validators.pattern(formValidators.phone)]],
       employeeDetails: this.form_builder.array([])
     });
-
-    // const storedData = this.setval.get_values();
-    // if (storedData && storedData.employeeDetails) {
-    //   this.addEmployeesForm.patchValue(storedData);
-    // }
   }
-
-
-  // ngOnInit() {
-  //   this.route.queryParams.subscribe((params: Params) => {
-  //     const index = +params['index']; // Convert to a number using the + operator
-  
-  //     if (!isNaN(index)) { // Check if it's a valid number
-  //       const storedData = this.setval.get_values();
-  //       const selectedEmployee = storedData.employeeDetails[index];
-  //       this.loadEmployeeData(selectedEmployee);
-  //     }
-  //   });
-  // }
-  // private loadEmployeeData(employee: any) {
-  //   this.addEmployeesForm.patchValue({
-  //     managerName: employee.managerName,
-  //     managerID: employee.managerID,
-  //     managerMailID: employee.managerMailID,
-  //     managerPhoneNumber: employee.managerPhoneNumber,
-  //     employeeDetails: [
-  //       {
-  //         Employeename: employee.employeeDetails.Employeename,
-  //         EmployeeID: employee.employeeDetails.EmployeeID,
-  //         EmployeeRole: employee.employeeDetails.EmployeeRole,
-  //         EmployeePhone: employee.employeeDetails.EmployeePhone,
-  //         EmployeeMail: employee.employeeDetails.EmployeeMail,
-  //       },
-  //     ],
-  //   });
-  // }
-
   addEmployeeData() {
     const enteredValue = this.addEmployeesForm.get('employeeDetails') as FormArray;
     enteredValue.push(
@@ -108,7 +72,7 @@ export class ShowEmployeeComponent {
       console.log(this.addEmployeesForm.value);
       this.setval.set_values(this.addEmployeesForm.value);
       this.route.navigate(['/crudemployee'])
-      // this.addEmployeesForm.get('employeeDetails')?.reset();
+      this.addEmployeesForm.get('employeeDetails')?.reset();
     }
   }
 

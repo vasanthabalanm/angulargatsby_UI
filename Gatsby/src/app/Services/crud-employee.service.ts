@@ -4,36 +4,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CrudEmployeeService {
-  employee_datas : any[] = [];
+  
   constructor() { }
 
-  // get_values(values:any){
-  //   this.employee_datas = values
-  // }
-
-  // set_values(){
-  //   return this.employee_datas;
-  // }
-
-
-  get_values(){
-
+  get_values():any{
+    return JSON.parse(sessionStorage.getItem('Manager Data')||'{}');
   }
 
   set_values(data:any){
     sessionStorage.setItem('Manager Data',JSON.stringify(data));
   }
-  // private storageKey = 'employee_data';
 
-  // get_values(): any {
-  //   return JSON.parse(localStorage.getItem(this.storageKey) || '{}');
+  // set_id(index:any){
+  //   sessionStorage.setItem('ID',JSON.stringify(index.))
   // }
 
-  // set_values(data: any): void {
-  //   localStorage.setItem(this.storageKey, JSON.stringify(data));
-  // }
+  remove_employee(indexValue:any) {
+    sessionStorage.removeItem(indexValue);
 
-  // clearLocalStorage(): void {
-  //   localStorage.removeItem(this.storageKey);
-  // }
+  }
 }

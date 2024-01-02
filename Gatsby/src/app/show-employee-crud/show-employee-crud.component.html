@@ -17,7 +17,7 @@
               <th>Manager Mail ID</th>
               <th>Manager Phone Number</th>
               <th>Edit </th>
-              <!-- <th>Delete </th> -->
+              <th>Delete </th>
             </tr>
           </thead>
           <tbody *ngIf="employeeData">
@@ -32,15 +32,15 @@
               <td>{{employeeData.managerMailID}}</td>
               <td>{{employeeData.managerPhoneNumber}}</td>
               <td>
-                <button class="btn" (click)="editEmployee()">
+                <button class="btn" (click)="editEmployee(i)">
                   <i class="fas fa-pencil-alt edited-edit-icon" ></i>
                 </button>
               </td>
-              <!-- <td class="text-center">
-                <button class="btn" [routerLink]="['/enteremployee']">
+              <td class="text-center">
+                <button class="btn" (click)="delete_employee(i)">
                   <i class="fas fa-trash-alt edited-delete-icon"></i>
                 </button>
-              </td> -->
+              </td>
             </tr>
           </tbody>
         </table>

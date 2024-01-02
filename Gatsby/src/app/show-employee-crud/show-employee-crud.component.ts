@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CrudEmployeeService } from '../Services/crud-employee.service';
 import { Router } from '@angular/router';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-show-employee-crud',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./show-employee-crud.component.css']
 })
 export class ShowEmployeeCrudComponent {
-  employeeData :any= [];
+  employeeData :any= {};
 
   constructor(private router:Router, private setval:CrudEmployeeService){}
 
@@ -16,8 +17,18 @@ export class ShowEmployeeCrudComponent {
     this.employeeData = this.setval.get_values();
   }
 
-  editEmployee() {
+  editEmployee(index:number) {
     this.router.navigate(['/enteremployee']);
-    this.setval.set_values(this.employeeData);
+  }
+
+  delete_employee(indexValue: number) {
+    const employeeDetai = this.employeeData.employeeDetails;
+    if (employeeDetai && employeeDetai.length > indexValue) {
+      employeeDetai.splice(indexValue, 1);
+      this.setval.set_values(this.employeeData);
+      if (employeeDetai.length === 0) {
+        this.setval.remove_employee('Manager Data');
+      }
+    }
   }
 }
