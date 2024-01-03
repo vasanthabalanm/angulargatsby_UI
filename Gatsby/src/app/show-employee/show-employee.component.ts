@@ -22,6 +22,40 @@ export class ShowEmployeeComponent {
       managerPhoneNumber: ['', [Validators.required, Validators.pattern(formValidators.phone)]],
       employeeDetails: this.form_builder.array([])
     });
+    this.loadManagerDetails();
+    const editedEmployee = this.setval.getEmployee();
+    console.log(editedEmployee)
+    console.log(editedEmployee.length)
+
+    if (editedEmployee) {
+      if(editedEmployee.length>0){
+        for (const employee of editedEmployee){
+          (this.addEmployeesForm.get('employeeDetails') as FormArray).push(
+            this.form_builder.group({
+              Employeename: [employee.Employeename],
+              EmployeeID: [employee.EmployeeID],
+              EmployeeRole: [employee.EmployeeRole],
+              EmployeePhone: [employee.EmployeePhone],
+              EmployeeMail: [employee.EmployeeMail]
+            })
+          );
+        }
+        
+      }
+    }
+    
+  }
+
+  loadManagerDetails() {
+    const managerDetails = this.setval.get_values();
+    if (managerDetails) {
+      this.addEmployeesForm.patchValue({
+        managerName: managerDetails.managerName || '',
+        managerID: managerDetails.managerID || '',
+        managerMailID: managerDetails.managerMailID || '',
+        managerPhoneNumber: managerDetails.managerPhoneNumber || ''
+      });
+    }
   }
   addEmployeeData() {
     const enteredValue = this.addEmployeesForm.get('employeeDetails') as FormArray;
@@ -34,7 +68,6 @@ export class ShowEmployeeComponent {
         EmployeeMail: ['', [Validators.required, Validators.pattern(formValidators.mail)]]
       })
     );
-    // this.setval.set_values(this.addEmployeesForm.value);
   }
 
   get managernames() {
@@ -75,12 +108,6 @@ export class ShowEmployeeComponent {
       this.addEmployeesForm.get('employeeDetails')?.reset();
     }
   }
-
-  // checkAllemployee() {
-  //   this.route.navigate(['showemployee']), {
-  //     state: { employeeData: this.addEmployeesForm.value }
-  //   }
-  // }
 
   nonamespaces(empname: AbstractControl) {
     const employename = empname.value;

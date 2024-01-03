@@ -17,9 +17,24 @@ export class ShowEmployeeCrudComponent {
     this.employeeData = this.setval.get_values();
   }
 
-  editEmployee(index:number) {
+  // editEmployee(index: number) {
+  //   const selectedEmployee = this.employeeData.employeeDetails[index];
+  //   this.setval.setEmployee(selectedEmployee);
+  //   this.router.navigate(['/enteremployee']);
+  // }
+
+  editEmployee() {
+    const selectedEmployee = this.employeeData.employeeDetails;
+    console.log(selectedEmployee)
+    this.setval.setEmployee(selectedEmployee);
     this.router.navigate(['/enteremployee']);
   }
+
+  // editEmployee() {
+  //   // const selectedEmployee = this.employeeData.employeeDetails[index];
+  //   this.setval.setEmployee(this.employeeData);
+  //   this.router.navigate(['/enteremployee']);
+  // }
 
   delete_employee(indexValue: number) {
     const employeeDetai = this.employeeData.employeeDetails;
