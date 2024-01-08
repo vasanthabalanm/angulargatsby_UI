@@ -110,7 +110,7 @@ export class RegisterFormComponent implements OnInit {
   get onestate() {
     return this.gatsbyform.get('states')
   }
-  get onecity() {
+  get onecity() { 
     return this.gatsbyform.get('cities')
   }
 

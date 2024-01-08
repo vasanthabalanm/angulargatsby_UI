@@ -25,7 +25,7 @@ export class ShowEmployeeComponent {
     this.loadManagerDetails();
     const editedEmployee = this.setval.getEmployee();
     console.log(editedEmployee)
-    console.log(editedEmployee.length)
+    // console.log(editedEmployee.length)
 
     if (editedEmployee) {
       if(editedEmployee.length>0){

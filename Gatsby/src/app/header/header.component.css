@@ -58,7 +58,7 @@
     font-weight: 600;
     font-size: 13px;
     background-color: #6324a9;
-    width: 80px;
+    width: 100%;
 }
 .link-render{
     gap: 2px;
@@ -71,4 +71,8 @@
     display: flex;
     justify-content: space-around;
     gap: 20px;
+}
+.login-btn{
+    text-decoration: none;
+    color: white;
 }

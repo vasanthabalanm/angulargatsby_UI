@@ -1,0 +1,29 @@
+<div class="center-box">
+    <div class="entire-login-form">
+        <form [formGroup]="logindetails" (submit)="formsubmit()" class="px-5 py-5">
+            <p class="note-back fw-bold">Welcome Back!</p>
+            <div class="email py-3">
+                <label class="fw-bold">Email:</label>
+                <input type="email" formControlName="email" class="input-box-size" required>
+                <div *ngIf="email?.errors &&(email?.touched || email?.dirty)" class="text-danger">
+                    <p *ngIf="email?.hasError('required')">Email is required*</p>
+                    <p *ngIf="email?.hasError('pattern')">Enter valid email*</p>
+                </div>
+            </div>
+            <div class="password pt-3">
+                <label class="fw-bold">Password:</label>
+                <input type="password" formControlName="password" class="input-box-size" required>
+                <div *ngIf="password?.errors &&(password?.touched || password?.dirty)" class="text-danger">
+                    <p *ngIf="password?.hasError('required')">Password is required*</p>
+                </div>
+            </div>
+            <div class="click-register-link py-3">
+                <small><a class="register-forms" [routerLink]="['/userRegister']">Register here?</a></small>
+            </div>
+    
+            <div class="whole-login-btn px-3 py-3">
+                <button class="login-btn" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

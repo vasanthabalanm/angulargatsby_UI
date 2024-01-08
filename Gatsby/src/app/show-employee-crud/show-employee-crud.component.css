@@ -1,27 +1,4 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
-/* 
-th{
-    text-align: center;
-}
-
-.employeedatas tr td {
-    text-align: justify;
-}
-.wrappers{
-    display: flex;
-    justify-content: space-evenly;
-}
-.edited-delete-icon{
-    color: red;
-    font-size: 20px;
-}
-.edited-edit-icon{
-    color: blue;
-    font-size: 20px;
-}
-.whole-table-content{
-    font-size: 11px;
-} */
 
 th{
     width: 10%;

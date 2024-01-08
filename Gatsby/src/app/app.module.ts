@@ -21,6 +21,11 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AllEmployeeComponent } from './all-employee/all-employee.component';
 import { ShowEmployeeComponent } from './show-employee/show-employee.component';
 import { ShowEmployeeCrudComponent } from './show-employee-crud/show-employee-crud.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { NgToastModule } from 'ng-angular-popup';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -39,14 +44,19 @@ import { ShowEmployeeCrudComponent } from './show-employee-crud/show-employee-cr
     AddEmployeeComponent,
     AllEmployeeComponent,
     ShowEmployeeComponent,
-    ShowEmployeeCrudComponent
+    ShowEmployeeCrudComponent,
+    LoginComponent,
+    RegisterComponent,
+    AdminDashboardComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

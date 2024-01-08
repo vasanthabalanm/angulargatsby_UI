@@ -7,6 +7,8 @@ export const apicommon = {
     headers: new HttpHeaders({
         'Content-type': 'application/json',
         'X-CSCAPI-KEY': 'ano4bjJQZklwSE1sTzhNMXhqYk4yVWRKbDRyVEZZY2tRSVVFTThrMA=='
-    })
+    }),
+
+    userapiurl: 'https://localhost:7039/api/UserManagement'
 
 }

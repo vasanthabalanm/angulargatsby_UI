@@ -1,0 +1,80 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.user-datas {
+  background: url("../../assets/images/fixed-admin-bg.png");
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.overall-profile-info {
+  display: flex;
+}
+.profile-fit {
+  position: relative;
+  margin-top: 130px;
+  margin-left: 25px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  border: 7px solid #cccaca;
+  background: #fff;
+}
+.user-info {
+  background-image: url("../../assets/images/Group4.png");
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 50px;
+  margin-left: 24px;
+  margin-top: 15px;
+  position: absolute;
+}
+.user-role {
+  margin-top: 170px;
+  margin-left: 12px;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th,td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  width: 16.66%;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.edited-delete-icon{
+    color: red;
+    font-size: 20px;
+}
+
+/* user page designs */
+.firstname,.lastname,.dob,.email,.password {
+  display: flex;
+  flex-direction: column;
+}
+.input-box-size{
+  width: 350px;
+  height: 30px;
+  border: 1px solid gray;
+  border-radius: 7px;
+  text-align: center;
+}
+
+.login-btn{
+  border: 1px solid white;
+  background-color: #6F544A;
+  color: #fff;
+  border-radius: 7px;
+}
+
+.no-records{
+  font-size: 30px;
+}

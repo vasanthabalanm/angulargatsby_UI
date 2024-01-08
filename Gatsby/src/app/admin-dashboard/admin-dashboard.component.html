@@ -1,0 +1,144 @@
+<ng-container *ngIf="role === 'Admin'">
+  <div class="container-fluid py-3 ">
+    <div class="user-datas">
+      <div class="px-5 py-4">
+        <button class="btn btn-light float-end" (click)="logout()"><span class="fas fa-sign-out-alt"></span></button>
+      </div>
+       <div class="overall-profile-info">
+           <div class="profile-fit">
+               <div class="user-info">
+               </div>
+           </div>
+           <div class="user-role">
+               <p>Welcome <span class="fw-bolder">{{email}}</span> !</p>
+           </div>
+       </div>
+    </div>
+
+    <div class="container" *ngIf="allUserDetails.length>0; then showusers; else nousers">
+       
+    </div>
+    <ng-template #showusers>
+      <table>
+        <thead>
+          <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userdata of allUserDetails;let i = index">
+            <td>{{userdata.firstname}}</td>
+            <td>{{userdata.lastname}}</td>
+            <td>{{userdata.email}}</td>
+            <td>{{ userdata.dateOfBirth | date:'dd-MM-yyyy' }}</td>
+              <td class="text-center">
+                <button class="btn" (click)="delete_user(userdata.email)">
+                  <i class="fas fa-trash-alt edited-delete-icon"></i>
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+
+    <ng-template #nousers>
+        <p class="text-center py-5 fw-bold no-records">No users added!</p>
+    </ng-template>
+</div>
+</ng-container>
+
+<ng-container *ngIf="role === 'User'">
+  <div class="container-fluid py-3 ">
+      <div class="user-datas">
+        <div class="px-5 py-4">
+          <button class="btn btn-light float-end" (click)="logout()"><span class="fas fa-sign-out-alt"></span></button>
+        </div>
+        <div class="overall-profile-info">
+            <div class="profile-fit">
+                <div class="user-info">
+                </div>
+            </div>
+            <div class="user-role">
+                <p>Welcome {{email}}!</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Date Of Birth</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let OneUser of particularUser">
+              <td>{{OneUser.firstname}}</td>
+              <td>{{OneUser.lastname}}</td>
+              <td>{{OneUser.dateOfBirth | date:'dd-MM-yyyy'}}</td>
+              <td>{{OneUser.email}}</td>
+            </tr>
+          </tbody>
+        </table> -->
+        <form [formGroup]="updateDetails" (submit)="UpdatedValues()" class="px-5 py-5">
+              <div class="d-flex justify-content-evenly py-3">
+                <div class="firstname">
+                  <label class="fw-bold">First Name:</label>
+                  <input type="text" formControlName="firstname" class="input-box-size" required (input)="nodigits($event)" >
+                  <div *ngIf="firstname?.invalid" class="text-danger">
+                      <p *ngIf="firstname?.hasError('required')">Firstname is required*</p>
+                      <p *ngIf="firstname?.hasError('maxlength')">Max length 30*</p>
+                      <p *ngIf="firstname?.hasError('pattern')">Only letters allowed</p>
+                      <p *ngIf="firstname?.hasError('nonamespace')">No Start and End space</p>
+                  </div>
+              </div>
+              <div class="lastname">
+                  <label class="fw-bold">Last Name:</label>
+                  <input type="text" formControlName="lastname" class="input-box-size" required (input)="nodigits($event)">
+                  <div *ngIf="lastname?.errors &&(lastname?.touched || lastname?.dirty)" class="text-danger">
+                      <p *ngIf="lastname?.hasError('required')">Lastname is required*</p>
+                      <p *ngIf="lastname?.hasError('maxlength')">Max length 30*</p>
+                      <p *ngIf="lastname?.hasError('pattern')">Only letters allowed</p>
+                      <p *ngIf="lastname?.hasError('nonamespace')">No Start and End space</p>
+                  </div>
+              </div>
+              </div>
+              <div class="d-flex justify-content-evenly py-3">
+                <div class="dob">
+                  <label class="fw-bold">Date Of Birth:</label>
+                  <input type="date" formControlName="dateofbirth" class="input-box-size" required max= "{{updatedDate}}">
+                  <div *ngIf="dob?.errors && (dob?.touched || dob?.dirty)" class="text-danger">
+                      <p *ngIf="dob?.hasError('required')">DOB is Required*</p>
+                      <p *ngIf="dob?.hasError('validateDate')">Enter Valid Date*</p>
+                  </div>
+              </div>
+              <div class="email">
+                  <label class="fw-bold">Email:</label>
+                  <input type="email" formControlName="email" class="input-box-size" required>
+                  <div *ngIf="emails?.errors &&(emails?.touched || emails?.dirty)" class="text-danger">
+                      <p *ngIf="emails?.hasError('required')">Email is required*</p>
+                      <p *ngIf="emails?.hasError('pattern')">Enter valid email*</p>
+                  </div>
+              </div>
+              </div>
+  
+          <div class="d-flex float-end px-3 py-3">
+            <div class="px-2">
+              <button class="btn btn-warning py-2 px-4 fw-bold" type="button" (click)="edituser()">Edit</button>
+            </div>
+            <div>
+              <button class="login-btn px-4 py-2" type="submit" [disabled]="!updateDetails.valid">Update</button>
+            </div>
+          </div>
+      </form>
+
+      </div>
+    </div>
+  </ng-container>
