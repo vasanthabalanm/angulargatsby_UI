@@ -90,17 +90,16 @@ export class AdminDashboardComponent implements OnInit {
 
   // admin has delete user
   delete_user(usermail: any) {
-    return this.getuser.deleteUserDetails(usermail).subscribe(
+     this.getuser.deleteUserDetails(usermail).subscribe(
       (response)=>{
         console.log(response);
-        alert("deleted?");
-        window.location.reload();
+        confirm("are you want to delete?");
+        this.fetchUsersData();
       },
       (err)=>{
         console.log(err)
-        alert("deleted?");
-        window.location.reload();
-      })
+      }
+     )
   }
   
   futureDatesDisable() {

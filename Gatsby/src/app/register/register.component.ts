@@ -93,12 +93,7 @@ export class RegisterComponent implements OnInit {
         // this.toast.success({detail:"SUCCESS",summary:"user registerd successfully",duration:4000});
         this.router.navigate(['adminlogin']);
         alert("user account created successfully");
-        // alert(reponse.message);
         })
-        // ,
-        //   error:(err=>{
-        //     alert(err?.error.message)
-        // })
       })
     }
     else{
